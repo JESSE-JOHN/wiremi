@@ -1,10 +1,10 @@
-(function($) {
+(function ($) {
   "use strict";
 
   /*-------------------------------------
   Preloader
   -------------------------------------*/
-  $('#preloader').fadeOut('slow', function() {
+  $('#preloader').fadeOut('slow', function () {
     $(this).remove();
   });
 
@@ -13,7 +13,7 @@
   -------------------------------------*/
   var eventCounter = $('#countdown');
   if (eventCounter.length) {
-    eventCounter.countdown('2021/08/1', function(e) {
+    eventCounter.countdown('2021/08/1', function (e) {
       $(this).html(e.strftime("<div class='countdown-section'><h2>%D</h2> <h3>Day%!D</h3> </div><div class='countdown-section'><h2>%H</h2> <h3>Hour%!H</h3> </div><div class='countdown-section'><h2>%M</h2> <h3>Minutes</h3> </div><div class='countdown-section'><h2>%S</h2> <h3>Second</h3> </div>"))
     });
   }
@@ -27,7 +27,7 @@
         menu: '#menu',
         scrollingSpeed: 280,
         loopBottom: true,
-        afterLoad: function(anchorLink, index) {
+        afterLoad: function (anchorLink, index) {
           if ($('#pagepiling-counter').length) {
             $('.counter-slider').counterUp({
               delay: 50,
@@ -45,7 +45,7 @@
   $(window).on('load', addNewClass);
 
   function addNewClass() {
-    $('body').imagesLoaded().done(function(instance) {
+    $('body').imagesLoaded().done(function (instance) {
       $('body').addClass('loaded');
     });
   }
@@ -77,7 +77,7 @@
   /*-------------------------------------
   Buble Background On Hover
   -------------------------------------*/
-  $('.animted-bg-wrap').on('mouseenter', function(e) {
+  $('.animted-bg-wrap').on('mouseenter', function (e) {
     var parentOffset = $(this).offset(),
       relX = e.pageX - parentOffset.left,
       relY = e.pageY - parentOffset.top;
@@ -88,7 +88,7 @@
       });
     }
   });
-  $('.animted-bg-wrap').on('mouseout', function(e) {
+  $('.animted-bg-wrap').on('mouseout', function (e) {
     var parentOffset = $(this).offset(),
       relX = e.pageX - parentOffset.left,
       relY = e.pageY - parentOffset.top;
@@ -103,7 +103,7 @@
   /*-------------------------------------
   login Pop Up Form
   -------------------------------------*/
-  $('#login-button').on('click', function(e) {
+  $('#login-button').on('click', function (e) {
     e.preventDefault();
     var self = $(this),
       target = self.next('#login-form');
@@ -116,7 +116,7 @@
     }
   });
 
-  $('#login-form').on('click', '.form-cancel', function(e) {
+  $('#login-form').on('click', '.form-cancel', function (e) {
     e.preventDefault();
     var self = $(this),
       parent = self.parents('#login-form'),
@@ -128,14 +128,14 @@
   /*-------------------------------------
   Theia Side Bar
   -------------------------------------*/
-  if (typeof($.fn.theiaStickySidebar) !== "undefined") {
+  if (typeof ($.fn.theiaStickySidebar) !== "undefined") {
     $('.sticky-coloum-wrap .sticky-coloum-item').theiaStickySidebar();
   }
 
   /*-------------------------------------
   Offcanvas Menu activation code
   -------------------------------------*/
-  $('#wrapper').on('click', '.offcanvas-menu-btn', function(e) {
+  $('#wrapper').on('click', '.offcanvas-menu-btn', function (e) {
     e.preventDefault();
     var $this = $(this),
       wrapper = $(this).parents('body').find('>#wrapper'),
@@ -166,7 +166,7 @@
         });
       }
     }
-    $(".offcanvas-mask, .offcanvas-close").on('click', function() {
+    $(".offcanvas-mask, .offcanvas-close").on('click', function () {
       removeOffcanvas();
     });
 
@@ -187,7 +187,7 @@
   --------------------------------------*/
   if ($.fn.meanmenu) {
     $('nav#dropdown').meanmenu({
-      siteLogo: "<div class='mobile-menu-nav-back'><a class='logo-mobile' href='index.html'><img src='media/logo-mobile.png' alt='logo' class='img-fluid'/></a></div>"
+      siteLogo: "<div class='mobile-menu-nav-back'><a class='logo-mobile' href='index.html'><img src='media/logo-dark.png' alt='logo' class='img-fluid'/></a></div>"
     });
   }
 
@@ -206,7 +206,7 @@
   -------------------------------------*/
   var contactForm = $('#contact-form');
   if (contactForm.length) {
-    contactForm.validator().on('submit', function(e) {
+    contactForm.validator().on('submit', function (e) {
       var $this = $(this),
         $target = contactForm.find('.form-response');
       if (e.isDefaultPrevented()) {
@@ -216,10 +216,10 @@
           url: "php/mailer.php",
           type: "POST",
           data: contactForm.serialize(),
-          beforeSend: function() {
+          beforeSend: function () {
             $target.html("<div class='alert alert-info'><p>Loading ...</p></div>");
           },
-          success: function(text) {
+          success: function (text) {
             if (text === "success") {
               $this[0].reset();
               $target.html("<div class='alert alert-success'><p>Message has been sent successfully.</p></div>");
@@ -266,7 +266,7 @@
     }
 
     var $isotope;
-    var blogGallerIso = $(".featuredContainer", $container).imagesLoaded(function() {
+    var blogGallerIso = $(".featuredContainer", $container).imagesLoaded(function () {
       var selectero = $container.find('.isotope-classes-tab .nav-item:first-child').data('filter') || '*';
 
       $isotope = $(".featuredContainer", $container).isotope({
@@ -284,7 +284,7 @@
 
       createGalleryPopup(selectero);
     });
-    $container.find(".isotope-classes-tab").on("click", "a", function() {
+    $container.find(".isotope-classes-tab").on("click", "a", function () {
       var $this = $(this);
       $this
         .parent(".isotope-classes-tab")
@@ -303,12 +303,12 @@
   /*-------------------------------------
   Window On Load
   -------------------------------------*/
-  $(window).on('load resize', function() {
+  $(window).on('load resize', function () {
     equalHeight();
 
     // Gallery Popup
     if ($('.zoom-gallery').length) {
-      $('.zoom-gallery').each(function() {
+      $('.zoom-gallery').each(function () {
         $(this).magnificPopup({
           delegate: 'a.popup-zoom',
           type: 'image',
@@ -343,7 +343,7 @@
       allH;
     $('.equal-height-wrap .item-figure,.equal-height-wrap .item-content').height('auto');
     if (wWidth > 767) {
-      $('.equal-height-wrap').each(function() {
+      $('.equal-height-wrap').each(function () {
         var self = $(this);
         var TempImgH = self.find('.item-figure').height();
         imgH = TempImgH > imgH ? TempImgH : imgH;
@@ -370,7 +370,7 @@
   /*-------------------------------------
   Google Map
   -------------------------------------*/
-  $('.map-layout1').each(function() {
+  $('.map-layout1').each(function () {
     var $this = $(this),
       key = $this.data('key'),
       lat = $this.data('lat'),
@@ -378,145 +378,145 @@
       mrkr = $this.data('mrkr');
 
     $this.gmap3({
-        center: [-37.81618, 144.95692],
-        zoom: 12,
-        scrollwheel: false,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        styles: [{
-          "featureType": "all",
-          "elementType": "labels.text.fill",
-          "stylers": [{
-            "saturation": 36
-          }, {
-            "color": "#333333"
-          }, {
-            "lightness": 40
-          }]
+      center: [-37.81618, 144.95692],
+      zoom: 12,
+      scrollwheel: false,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      styles: [{
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [{
+          "saturation": 36
         }, {
-          "featureType": "all",
-          "elementType": "labels.text.stroke",
-          "stylers": [{
-            "visibility": "on"
-          }, {
-            "color": "#ffffff"
-          }, {
-            "lightness": 16
-          }]
+          "color": "#333333"
         }, {
-          "featureType": "all",
-          "elementType": "labels.icon",
-          "stylers": [{
-            "visibility": "off"
-          }]
-        }, {
-          "featureType": "administrative",
-          "elementType": "geometry.fill",
-          "stylers": [{
-            "color": "#fefefe"
-          }, {
-            "lightness": 20
-          }]
-        }, {
-          "featureType": "administrative",
-          "elementType": "geometry.stroke",
-          "stylers": [{
-            "color": "#fefefe"
-          }, {
-            "lightness": 17
-          }, {
-            "weight": 1.2
-          }]
-        }, {
-          "featureType": "administrative.country",
-          "elementType": "geometry.stroke",
-          "stylers": [{
-            "saturation": "-9"
-          }]
-        }, {
-          "featureType": "landscape",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#e8e8e8"
-          }, {
-            "lightness": 20
-          }]
-        }, {
-          "featureType": "landscape.natural.landcover",
-          "elementType": "geometry.fill",
-          "stylers": [{
-            "saturation": "-4"
-          }, {
-            "color": "#cdcdcd"
-          }]
-        }, {
-          "featureType": "poi",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#d4f1c9"
-          }, {
-            "lightness": 21
-          }]
-        }, {
-          "featureType": "poi.park",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#d4f1c9"
-          }, {
-            "lightness": 21
-          }]
-        }, {
-          "featureType": "road.highway",
-          "elementType": "geometry.fill",
-          "stylers": [{
-            "color": "#ffeea4"
-          }, {
-            "lightness": 60
-          }]
-        }, {
-          "featureType": "road.highway",
-          "elementType": "geometry.stroke",
-          "stylers": [{
-            "color": "#f5d681"
-          }, {
-            "lightness": 30
-          }, {
-            "weight": 1
-          }]
-        }, {
-          "featureType": "road.arterial",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#ffffff"
-          }, {
-            "lightness": 18
-          }]
-        }, {
-          "featureType": "road.local",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#ffffff"
-          }, {
-            "lightness": 16
-          }]
-        }, {
-          "featureType": "transit",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#f2f2f2"
-          }, {
-            "lightness": 19
-          }]
-        }, {
-          "featureType": "water",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#aadaff"
-          }, {
-            "lightness": 17
-          }]
+          "lightness": 40
         }]
-      })
-      .marker(function(map) {
+      }, {
+        "featureType": "all",
+        "elementType": "labels.text.stroke",
+        "stylers": [{
+          "visibility": "on"
+        }, {
+          "color": "#ffffff"
+        }, {
+          "lightness": 16
+        }]
+      }, {
+        "featureType": "all",
+        "elementType": "labels.icon",
+        "stylers": [{
+          "visibility": "off"
+        }]
+      }, {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [{
+          "color": "#fefefe"
+        }, {
+          "lightness": 20
+        }]
+      }, {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [{
+          "color": "#fefefe"
+        }, {
+          "lightness": 17
+        }, {
+          "weight": 1.2
+        }]
+      }, {
+        "featureType": "administrative.country",
+        "elementType": "geometry.stroke",
+        "stylers": [{
+          "saturation": "-9"
+        }]
+      }, {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#e8e8e8"
+        }, {
+          "lightness": 20
+        }]
+      }, {
+        "featureType": "landscape.natural.landcover",
+        "elementType": "geometry.fill",
+        "stylers": [{
+          "saturation": "-4"
+        }, {
+          "color": "#cdcdcd"
+        }]
+      }, {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#d4f1c9"
+        }, {
+          "lightness": 21
+        }]
+      }, {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#d4f1c9"
+        }, {
+          "lightness": 21
+        }]
+      }, {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [{
+          "color": "#ffeea4"
+        }, {
+          "lightness": 60
+        }]
+      }, {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [{
+          "color": "#f5d681"
+        }, {
+          "lightness": 30
+        }, {
+          "weight": 1
+        }]
+      }, {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#ffffff"
+        }, {
+          "lightness": 18
+        }]
+      }, {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#ffffff"
+        }, {
+          "lightness": 16
+        }]
+      }, {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#f2f2f2"
+        }, {
+          "lightness": 19
+        }]
+      }, {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#aadaff"
+        }, {
+          "lightness": 17
+        }]
+      }]
+    })
+      .marker(function (map) {
         return {
           position: map.getCenter(),
           icon: mrkr
@@ -527,7 +527,7 @@
   /*-------------------------------------
   Section background image
   -------------------------------------*/
-  $("[data-bg-image]").each(function() {
+  $("[data-bg-image]").each(function () {
     var img = $(this).data("bg-image");
     $(this).css({
       backgroundImage: "url(" + img + ")"
@@ -537,7 +537,7 @@
   /*-------------------------------------
   On click loadmore functionality
   -------------------------------------*/
-  $('.loadmore').on('click', 'a', function(e) {
+  $('.loadmore').on('click', 'a', function (e) {
     e.preventDefault();
     var _this = $(this),
       _parent = _this.parents('.menu-list-wrapper'),
@@ -564,7 +564,7 @@
       _set.animate({
         opacity: 0
       });
-      _set.promise().done(function() {
+      _set.promise().done(function () {
         _set.removeClass('d-none');
         _set.show().animate({
           opacity: 1
@@ -667,13 +667,13 @@
           nav_next = $('.rt-next', nav),
           nav_prev = $('.rt-prev', nav);
 
-        nav_next.on('click', function(e) {
+        nav_next.on('click', function (e) {
           e.preventDefault();
           owl.trigger('next.owl.carousel');
           return false;
         });
 
-        nav_prev.on('click', function(e) {
+        nav_prev.on('click', function (e) {
           e.preventDefault();
           owl.trigger('prev.owl.carousel');
           return false;
@@ -681,7 +681,7 @@
       }
     }
 
-    $('.rc-carousel').each(function() {
+    $('.rc-carousel').each(function () {
       var carousel = $(this),
         options = $.extend({
           trigger_start: '',
@@ -694,7 +694,7 @@
 
       } else {
         var tempOwl = '';
-        $(window).on('resize load', function() {
+        $(window).on('resize load', function () {
           var wW = $(window).width();
 
           if (wW <= options.trigger_start) {
@@ -709,7 +709,7 @@
     });
   }
 
-  $('[data-type="section-switch"], #dropdown > ul > li > a').on('click', function() {
+  $('[data-type="section-switch"], #dropdown > ul > li > a').on('click', function () {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
       var target = $(this.hash);
       if (target.length > 0) {
@@ -726,7 +726,7 @@
   /*-------------------------------------
   On Scroll
   -------------------------------------*/
-  $(window).on('scroll', function() {
+  $(window).on('scroll', function () {
 
     // Back Top Button
     if ($(window).scrollTop() > 700) {
@@ -756,17 +756,17 @@
   /*-------------------------------------
   Jquery Serch Box
   -------------------------------------*/
-  $('a[href="#template-search"]').on("click", function(event) {
+  $('a[href="#template-search"]').on("click", function (event) {
     event.preventDefault();
     var target = $("#template-search");
     target.addClass("open");
-    setTimeout(function() {
+    setTimeout(function () {
       target.find('input').focus();
     }, 600);
     return false;
   });
 
-  $("#template-search, #template-search button.close").on("click keyup", function(event) {
+  $("#template-search, #template-search button.close").on("click keyup", function (event) {
     if (
       event.target === this ||
       event.target.className === "close" ||
@@ -779,14 +779,14 @@
   /*-------------------------------------
   Circle Bars - Knob
   -------------------------------------*/
-  if (typeof($.fn.knob) != 'undefined') {
-    $('.knob.knob-nopercent').each(function() {
+  if (typeof ($.fn.knob) != 'undefined') {
+    $('.knob.knob-nopercent').each(function () {
       var $this = $(this),
         knobVal = $this.attr('data-rel');
       $this.knob({
-        'draw': function() {}
+        'draw': function () { }
       });
-      $this.appear(function() {
+      $this.appear(function () {
         $({
           value: 0
         }).animate({
@@ -794,7 +794,7 @@
         }, {
           duration: 2000,
           easing: 'swing',
-          step: function() {
+          step: function () {
             $this.val(Math.ceil(this.value)).trigger('change');
           }
         });
@@ -805,15 +805,15 @@
     });
 
     //others skill
-    $('.knob').each(function() {
+    $('.knob').each(function () {
       var $this = $(this),
         knobVal = $this.attr('data-rel');
       $this.knob({
-        'draw': function() {
+        'draw': function () {
           $(this.i).val(this.cv)
         }
       });
-      $this.appear(function() {
+      $this.appear(function () {
         $({
           value: 0
         }).animate({
@@ -821,7 +821,7 @@
         }, {
           duration: 2000,
           easing: 'swing',
-          step: function() {
+          step: function () {
             $this.val(Math.ceil(this.value)).trigger('change');
           }
         });
@@ -835,7 +835,7 @@
   /*-------------------------------------
   Anchor Tag - Prevent Default
   -------------------------------------*/
-  $('a[href=\\#]').on('click', function(e) {
+  $('a[href=\\#]').on('click', function (e) {
     e.preventDefault();
   });
 
