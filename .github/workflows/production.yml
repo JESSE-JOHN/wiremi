@@ -1,0 +1,22 @@
+name: Production
+run-name: ${{ github.actor }} deploy the production website
+
+on:
+  push:
+    branches:
+      - 'develop'
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ${{ secrets.PRODUCTION_FTP_SERVER }}
+          username: ${{ secrets.PRODUCTION_FTP_USERNAME }}
+          password: ${{ secrets.PRODUCTION_FTP_PASSWORD }}
+          exclude: |
+            **/.git*
+            **/.git*/**
